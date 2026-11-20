@@ -1,9 +1,9 @@
 ---
-name: clear-quotes
+name: quote-proposal-optimization
 description: Draft or revise a business quote or service proposal so customers and AI reviewers can understand the offer, compare its terms, and identify supported reasons to choose the business. Use with a customer brief, an existing quote, or approved company information.
 ---
 
-# Clear quotes
+# Quote and Proposal Optimization
 
 Turn the supplied business information into a quote a customer can understand and an AI reviewer can accurately summarize. This is a reusable template: customize the profile below with the business owner before relying on it as company guidance.
 

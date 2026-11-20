@@ -1,32 +1,39 @@
-# Clear Quotes
+# Optimization Skills
 
-A reusable AI skill for drafting and revising business quotes and service proposals. It helps customers and AI reviewers understand scope, commercial terms, supported strengths, and next steps.
+A collection of reusable AI skills. Each skill lives in its own folder under `skills/`, with its instructions and any supporting resources kept together.
+
+## Skill catalog
+
+| Skill | Purpose |
+| --- | --- |
+| [Quote and Proposal Optimization](skills/quote-proposal-optimization/SKILL.md) | Draft and revise business quotes and service proposals so customers and AI reviewers can understand the offer, compare its terms, and identify supported strengths. |
 
 ## Use in a chat
 
-Attach `SKILL.md`, or paste its contents, together with an existing quotation or customer brief. For example:
+Open the skill from the catalog and attach its `SKILL.md`, or paste its contents, together with your quotation or customer brief. Ask the assistant to apply the skill, preserve your business's tone and commercial terms, and ask about missing details.
 
-> Use this skill to improve my quotation. Preserve my business's tone and commercial terms, and ask me about missing details.
+The quote and proposal skill helps you customize a business profile in short groups. Save approved company information in a separate copy and review the finished quotation before sending it.
 
-The template asks for your business profile in short groups. Customize a separate copy with approved company information; keep this starter generic. Review the finished quotation before sending it.
+## Install a skill in Codex
 
-## Install as a Codex skill
-
-From this repository's root, copy the skill and its UI metadata into a new `clear-quotes` directory under your Codex skills directory:
+From this repository's root, copy the chosen skill folder into your Codex skills directory. For the current skill:
 
 ```sh
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/clear-quotes/agents"
-cp SKILL.md "${CODEX_HOME:-$HOME/.codex}/skills/clear-quotes/SKILL.md"
-cp agents/openai.yaml "${CODEX_HOME:-$HOME/.codex}/skills/clear-quotes/agents/openai.yaml"
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R skills/quote-proposal-optimization "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
-Check for an existing customized installation before copying. Invoke it with a request such as:
+Check for an existing customized installation before copying. Invoke the installed skill by mentioning `$quote-proposal-optimization` alongside your quotation and customer brief.
 
-> Use $clear-quotes to revise this proposal using the attached customer brief.
+## Add another skill
 
-## Requirements and contents
+Create `skills/<skill-name>/SKILL.md` with YAML frontmatter containing `name` and `description`. Match the folder name to the skill name using lowercase letters, digits, and hyphens. Keep any optional `agents/`, `scripts/`, `references/`, or `assets/` resources inside that skill's folder and add a row to the catalog above.
 
-No scripts, packages, API keys, or external services are required by the skill. Supply an AI assistant and the business materials it needs. `SKILL.md` contains the complete instructions; `agents/openai.yaml` supplies optional Codex display metadata.
+Each skill should be usable on its own. Document any dependencies with the skill that needs them.
+
+## Requirements
+
+The current skill requires an AI assistant and user-supplied business materials. It needs no scripts, packages, API keys, or external services. Its `agents/openai.yaml` supplies optional Codex display metadata.
 
 Keep customized company profiles and customer documents outside this repository. Unknown prices, dates, evidence, and guarantees must be confirmed. Drafting a quote does not authorize sending it or making commitments.
 
