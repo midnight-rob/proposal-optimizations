@@ -8,22 +8,68 @@ A collection of reusable AI skills. Each skill lives in its own folder under `sk
 | --- | --- |
 | [Quote and Proposal Optimization](skills/quote-proposal-optimization/SKILL.md) | Draft and revise business quotes and service proposals so customers and AI reviewers can understand the offer, compare its terms, and identify supported strengths. |
 
-## Use in a chat
+## Choose how to use a skill
 
-Open the skill from the catalog and attach its `SKILL.md`, or paste its contents, together with your quotation or customer brief. Ask the assistant to apply the skill, preserve your business's tone and commercial terms, and ask about missing details.
+These skills use the open [Agent Skills format](https://agentskills.io/home): a folder containing `SKILL.md` and any supporting resources. Use your agent's native skill installer when it supports this format, or provide the instructions directly in a chat.
+
+### Any chat assistant: ChatGPT, Claude, Gemini, Perplexity, Grok, and others
+
+Open the skill from the catalog, copy the contents of its `SKILL.md`, and paste them into your conversation together with your quotation or customer brief. You can attach the file instead when your app supports Markdown attachments.
+
+Ask the assistant to apply the supplied instructions, preserve your business's tone and commercial terms, and ask about missing details. For example:
+
+> Use the attached skill to improve my quotation. Keep the commercial terms unchanged, preserve my business's voice, and ask me about any missing information.
+
+This uses the skill as conversation context. Automatic discovery, persistent installation, and file support depend on the app. Provide the instructions again in a new chat unless you have saved them using a supported feature in that app.
 
 The quote and proposal skill helps you customize a business profile in short groups. Save approved company information in a separate copy and review the finished quotation before sending it.
 
-## Install a skill in Codex
+### Agents with native Agent Skills support
 
-From this repository's root, copy the chosen skill folder into your Codex skills directory. For the current skill:
+Download or clone this repository, then install the individual folder under `skills/` using your agent's documented skill directory or import workflow. Keep `SKILL.md` and its supporting resources together. Install the chosen skill folder rather than the entire collection as one skill.
+
+The commands below run from this repository's root on macOS or Linux. Check for an existing customized installation before copying.
+
+#### Claude Code
+
+Copy the skill into your personal Claude Code skills directory:
+
+```sh
+mkdir -p "$HOME/.claude/skills"
+cp -R skills/quote-proposal-optimization "$HOME/.claude/skills/"
+```
+
+Invoke it with `/quote-proposal-optimization` alongside your quotation and customer brief. For a project-only installation, use `.claude/skills/` in that project instead. See the [Claude Code skills documentation](https://code.claude.com/docs/en/skills).
+
+#### Claude web or desktop
+
+Package the `skills/quote-proposal-optimization` folder as a ZIP containing that folder and its files. In Claude, go to **Customize > Skills**, choose **+ > Create skill > Upload a skill**, upload the ZIP, and enable the skill. Availability depends on your account settings; Claude's skills feature requires code execution and file creation to be enabled. See [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+
+#### Gemini CLI
+
+Copy the skill into your personal Gemini CLI skills directory:
+
+```sh
+mkdir -p "$HOME/.gemini/skills"
+cp -R skills/quote-proposal-optimization "$HOME/.gemini/skills/"
+```
+
+In Gemini CLI, run `/skills reload`, then `/skills list` to confirm discovery. Ask Gemini to apply Quote and Proposal Optimization to your supplied quotation. See the [Gemini CLI skills documentation](https://geminicli.com/docs/cli/skills/). For the Gemini chat app, use the chat instructions above.
+
+#### Codex
+
+Copy the skill into your Codex skills directory:
 
 ```sh
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 cp -R skills/quote-proposal-optimization "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
-Check for an existing customized installation before copying. Invoke the installed skill by mentioning `$quote-proposal-optimization` alongside your quotation and customer brief.
+Invoke it by mentioning `$quote-proposal-optimization` alongside your quotation and customer brief.
+
+#### Other compatible agents
+
+Follow your agent's instructions for importing an Agent Skills folder or placing it in a supported skills directory. Directory names and invocation syntax vary by product. If your app does not offer native skill loading, use the chat instructions above.
 
 ## Add another skill
 
